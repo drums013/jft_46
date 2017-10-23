@@ -1,6 +1,6 @@
 package training.pft.sanbox;
 
-public class ss12 {
+public class Ss12 {
 
   public static void main(String[] args) {
 
