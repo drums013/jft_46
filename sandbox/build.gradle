@@ -1,3 +1,3 @@
 apply plugin: 'java'
 apply plugin: 'application'
-mainClassName = "training.pft.sanbox.Ss12"
+mainClassName = "training.pft.sanbox.DistanceBetweenPoints"
