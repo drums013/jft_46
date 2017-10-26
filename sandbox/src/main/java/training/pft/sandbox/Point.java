@@ -1,4 +1,4 @@
-package training.pft.sanbox;
+package training.pft.sandbox;
 
 public class Point {
 

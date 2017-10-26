@@ -1,3 +1,11 @@
 apply plugin: 'java'
 apply plugin: 'application'
-mainClassName = "training.pft.sanbox.DistanceBetweenPoints"
+mainClassName = "training.pft.sandbox.Ss12"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.testng:testng:6.11'
+}
