@@ -1,5 +1,6 @@
 package training.pft.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import training.pft.addressbook.model.ContactData;
 
@@ -14,9 +15,12 @@ public class ContactDeletionTests extends TestBase {
               "8-800-000-00-00", "tester1@rrr.com", "tester2@gmail.com",
               "tester@666.ru", "http://localhost","[none]"), true);
     }
+    int before = app.getContactHelper().getContactCount();
     app.getContactHelper().selectContact();
     app.getContactHelper().deleteSelectedContacts();
     app.getNavigationHelper().gotoHomePage();
+    int after = app.getContactHelper().getContactCount();
+    Assert.assertEquals(after, before - 1);
   }
 
 }

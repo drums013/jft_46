@@ -1,5 +1,6 @@
 package training.pft.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import training.pft.addressbook.model.ContactData;
 
@@ -14,6 +15,7 @@ public class ContactModificationTests extends TestBase {
               null, null, null,
               null, null, "[none]"), true);
     }
+    int before = app.getContactHelper().getContactCount();
     app.getContactHelper().initContactModification();
     app.getContactHelper().fillOutContactDetails(new ContactData("Vasya", "Petrov",
             "Petrovich", "tester.1123", "+7(343)00-00-00", "+7(900)949-04-04",
@@ -21,5 +23,7 @@ public class ContactModificationTests extends TestBase {
             "tester@666.ru", "http://localhost","[none]"),false);
     app.getContactHelper().submitContactModification();
     app.getContactHelper().returnToHomePage();
+    int after = app.getContactHelper().getContactCount();
+    Assert.assertEquals(after, before);
   }
 }
