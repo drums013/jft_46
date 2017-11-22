@@ -1,60 +1,87 @@
 package training.pft.addressbook.model;
 
 public class ContactData {
-  private int id;
-  private final String firstname;
-  private final String middlename;
-  private final String lastname;
-  private final String nick;
-  private final String homephone;
-  private final String mobilephone;
-
-  private final String workphone;
-  private final String firstmail;
-  private final String secondmail;
-  private final String firdmail;
-  private final String userhomepage;
+  private int id = Integer.MAX_VALUE;
+  private String firstname;
+  private String middlename;
+  private String lastname;
+  private String nick;
+  private String homephone;
+  private String mobilephone;
+  private String workphone;
+  private String firstmail;
+  private String secondmail;
+  private String firdmail;
+  private String userhomepage;
   private String group;
-
-  public ContactData(String firstname, String middlename, String lastname, String nick, String homephone, String mobilephone, String workphone, String firstmail, String secondmail, String firdmail, String userhomepage, String group) {
-    this.id = Integer.MAX_VALUE;
-    this.firstname = firstname;
-    this.middlename = middlename;
-    this.lastname = lastname;
-    this.nick = nick;
-    this.homephone = homephone;
-    this.mobilephone = mobilephone;
-    this.workphone = workphone;
-    this.firstmail = firstmail;
-    this.secondmail = secondmail;
-
-    this.firdmail = firdmail;
-    this.userhomepage = userhomepage;
-    this.group = group;
-  }
-
-  public ContactData(int id, String firstname, String middlename, String lastname, String nick, String homephone, String mobilephone, String workphone, String firstmail, String secondmail, String firdmail, String userhomepage, String group) {
-    this.id = id;
-    this.firstname = firstname;
-    this.middlename = middlename;
-    this.lastname = lastname;
-    this.nick = nick;
-    this.homephone = homephone;
-    this.mobilephone = mobilephone;
-    this.workphone = workphone;
-    this.firstmail = firstmail;
-    this.secondmail = secondmail;
-    this.firdmail = firdmail;
-    this.userhomepage = userhomepage;
-    this.group = group;
-  }
 
   public int getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public ContactData withId(int id) {
     this.id = id;
+    return this;
+  }
+
+  public ContactData withFirstname(String firstname) {
+    this.firstname = firstname;
+    return this;
+  }
+
+  public ContactData withMiddlename(String middlename) {
+    this.middlename = middlename;
+    return this;
+  }
+
+  public ContactData withLastname(String lastname) {
+    this.lastname = lastname;
+    return this;
+  }
+
+  public ContactData withNick(String nick) {
+    this.nick = nick;
+    return this;
+  }
+
+  public ContactData withHomephone(String homephone) {
+    this.homephone = homephone;
+    return this;
+  }
+
+  public ContactData withMobilephone(String mobilephone) {
+    this.mobilephone = mobilephone;
+    return this;
+  }
+
+  public ContactData withWorkphone(String workphone) {
+    this.workphone = workphone;
+    return this;
+  }
+
+  public ContactData withFirstmail(String firstmail) {
+    this.firstmail = firstmail;
+    return this;
+  }
+
+  public ContactData withSecondmail(String secondmail) {
+    this.secondmail = secondmail;
+    return this;
+  }
+
+  public ContactData withFirdmail(String firdmail) {
+    this.firdmail = firdmail;
+    return this;
+  }
+
+  public ContactData withUserhomepage(String userhomepage) {
+    this.userhomepage = userhomepage;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
   }
 
   public String getFirstname() {
