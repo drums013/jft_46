@@ -28,8 +28,8 @@ public class ContactModificationTests extends TestBase {
             .withWorkphone("8-800-000-00-00").withFirstmail("tester1@rrr.com").withSecondmail("tester2@gmail.com")
             .withFirdmail("tester@666.ru").withUserhomepage("http://localhost").withGroup("[none]");
     app.contact().modify(contact);
+    assertThat(app.contact().count(), equalTo(before.size()));
     Contacts after = app.contact().all();
-    assertEquals(after.size(), before.size());
     assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
   }
 

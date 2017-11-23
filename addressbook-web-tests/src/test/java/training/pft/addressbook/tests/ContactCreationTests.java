@@ -18,10 +18,21 @@ public class ContactCreationTests extends TestBase {
             .withWorkphone("8-800-000-00-00").withFirstmail("tester1@rrr.com").withSecondmail("tester2@gmail.com")
             .withFirdmail("tester@666.ru").withUserhomepage("http://localhost").withGroup("[none]");
     app.contact().create(contact, true);
+    assertThat(app.contact().count(), equalTo(before.size() + 1));
     Contacts after = app.contact().all();
-    assertThat(after.size(), equalTo(before.size() + 1));
     assertThat(after, equalTo(before.withAdded(contact
             .withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
+  }
+
+  @Test
+  public void testBadContactCreation() {
+    app.goTo().homePage();
+    Contacts before = app.contact().all();
+    ContactData contact = new ContactData().withFirstname("'4").withGroup("[none]");
+    app.contact().create(contact, true);
+    assertThat(app.contact().count(), equalTo(before.size()));
+    Contacts after = app.contact().all();
+    assertThat(after, equalTo(before));
   }
 
 }
