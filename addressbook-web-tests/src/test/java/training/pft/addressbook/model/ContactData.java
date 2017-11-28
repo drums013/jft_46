@@ -14,13 +14,17 @@ public class ContactData {
   private String firdmail;
   private String userhomepage;
   private String group;
-
-  public int getId() {
-    return id;
-  }
+  private String allPhones;
+  private String firstAddress;
+  private String allEmails;
 
   public ContactData withId(int id) {
     this.id = id;
+    return this;
+  }
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
     return this;
   }
 
@@ -84,6 +88,25 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withFirstAddress(String firstAddress) {
+    this.firstAddress = firstAddress;
+    return this;
+  }
+
+  public ContactData withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
+  }
+
+
+  public int getId() {
+    return id;
+  }
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
   public String getFirstname() {
     return firstname;
   }
@@ -130,6 +153,14 @@ public class ContactData {
 
   public String getGroup() {
     return group;
+  }
+
+  public String getFirstAddress() {
+    return firstAddress;
+  }
+
+  public String getAllEmails() {
+    return allEmails;
   }
 
   @Override
