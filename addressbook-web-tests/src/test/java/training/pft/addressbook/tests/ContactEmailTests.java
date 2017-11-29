@@ -18,7 +18,7 @@ public class ContactEmailTests extends TestBase {
     app.goTo().homePage();
     if (app.contact().all().size() == 0) {
       app.contact().create(new ContactData().withFirstmail("tester1@rrr.com").withSecondmail("tester2@gmail.com")
-              .withFirdmail("tester@666.ru").withGroup("[none]"), true);
+              .withFirdmail("tester@666.ru"), true);
     }
   }
 

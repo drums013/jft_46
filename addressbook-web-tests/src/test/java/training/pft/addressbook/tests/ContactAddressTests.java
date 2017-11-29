@@ -15,7 +15,7 @@ public class ContactAddressTests extends TestBase {
     if (app.contact().all().size() == 0) {
       app.contact().create(new ContactData().withFirstAddress("  \n    ul. Lunacharskogo, 186-190\n" +
               "Ekaterinburg\n" +
-              "Sverdlovskaya obl.").withGroup("[none]"), true);
+              "Sverdlovskaya obl."), true);
     }
   }
 
