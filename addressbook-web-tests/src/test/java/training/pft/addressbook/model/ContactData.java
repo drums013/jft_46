@@ -1,5 +1,7 @@
 package training.pft.addressbook.model;
 
+import java.io.File;
+
 public class ContactData {
   private int id = Integer.MAX_VALUE;
   private String firstname;
@@ -17,6 +19,12 @@ public class ContactData {
   private String allPhones;
   private String firstAddress;
   private String allEmails;
+  private File photo;
+
+  public ContactData withPhoto(File photo) {
+    this.photo = photo;
+    return this;
+  }
 
   public ContactData withId(int id) {
     this.id = id;
@@ -98,6 +106,9 @@ public class ContactData {
     return this;
   }
 
+  public File getPhoto() {
+    return photo;
+  }
 
   public int getId() {
     return id;
