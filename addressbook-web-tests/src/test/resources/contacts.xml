@@ -1,0 +1,32 @@
+<list>
+  <contact>
+    <firstname>Vasya 0</firstname>
+    <lastname>Petrovich 0</lastname>
+    <homephone>00-00-00 0</homephone>
+    <mobilephone>+7(000)00-00-00 0</mobilephone>
+    <workphone>+8 800 00 00 00 0</workphone>
+    <firstmail>tester1@rrr.com 0</firstmail>
+    <secondmail>tester2@gmail.com</secondmail>
+    <firdmail>tester@666.ru</firdmail>
+  </contact>
+  <contact>
+    <firstname>Vasya 1</firstname>
+    <lastname>Petrovich 1</lastname>
+    <homephone>00-00-00 1</homephone>
+    <mobilephone>+7(000)00-00-00 1</mobilephone>
+    <workphone>+8 800 00 00 00 1</workphone>
+    <firstmail>tester1@rrr.com 1</firstmail>
+    <secondmail>tester2@gmail.com</secondmail>
+    <firdmail>tester@666.ru</firdmail>
+  </contact>
+  <contact>
+    <firstname>Vasya 2</firstname>
+    <lastname>Petrovich 2</lastname>
+    <homephone>00-00-00 2</homephone>
+    <mobilephone>+7(000)00-00-00 2</mobilephone>
+    <workphone>+8 800 00 00 00 2</workphone>
+    <firstmail>tester1@rrr.com 2</firstmail>
+    <secondmail>tester2@gmail.com</secondmail>
+    <firdmail>tester@666.ru</firdmail>
+  </contact>
+</list>
