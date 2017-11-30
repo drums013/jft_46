@@ -5,7 +5,10 @@ import org.testng.annotations.Test;
 import training.pft.addressbook.model.ContactData;
 import training.pft.addressbook.model.Contacts;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -16,18 +19,17 @@ import static org.hamcrest.Matchers.equalTo;
 public class ContactCreationTests extends TestBase {
 
   @DataProvider
-  public Iterator<Object[]> validContacts() {
+  public Iterator<Object[]> validContacts() throws IOException {
     List<Object[]> list = new ArrayList<Object[]>();
-    File photo = new File("src/test/resources/test.png");
-    list.add(new Object[] {new ContactData().withFirstname("Vasya 1").withMiddlename("Petrov 1").withLastname("Petrovich 1")
-            .withNick("tester.1").withHomephone("11-11-11").withMobilephone("+7(900)111 11 11")
-            .withWorkphone("8-800-000-00-00").withFirstmail("tester1@rrr.com").withSecondmail("tester2@gmail.com")
-            .withFirdmail("tester@666.ru").withUserhomepage("http://localhost").withPhoto(photo)});
-    list.add(new Object[] {new ContactData().withFirstname("Dany").withLastname("Jones")
-            .withHomephone("11-11-11").withMobilephone("+7(900)111 11 11")
-            .withWorkphone("8-800-000-00-00")});
-    list.add(new Object[] {new ContactData().withFirstname("Dany 2").withLastname("Jones 2")
-            .withFirstmail("111@1.com").withSecondmail("222@2.com").withFirdmail("333@3.cpom")});
+    BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.csv")));
+    String line = reader.readLine();
+    while (line != null) {
+      String[] split = line.split(";");
+      list.add(new Object[] {new ContactData().withFirstname(split[0]).withLastname(split[1]).withHomephone(split[2])
+              .withMobilephone(split[3]).withWorkphone(split[4]).withFirstmail(split[5]).withSecondmail(split[6])
+              .withFirdmail(split[7])});
+      line = reader.readLine();
+    }
     return list.iterator();
   }
 
@@ -42,7 +44,7 @@ public class ContactCreationTests extends TestBase {
             .withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
   }
 
-  @Test
+  @Test(enabled = false)
   public void testBadContactCreation() {
     app.goTo().homePage();
     Contacts before = app.contact().all();

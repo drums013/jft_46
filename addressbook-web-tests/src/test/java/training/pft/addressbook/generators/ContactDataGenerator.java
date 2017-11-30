@@ -40,8 +40,9 @@ public class ContactDataGenerator {
   private static void save(List<ContactData> contacts, File file) throws IOException {
     Writer writer = new FileWriter(file);
     for (ContactData contact : contacts) {
-      writer.write(String.format("%s;%s;%s;%s;%s\n", contact.getFirstname(), contact.getLastname()
-              , contact.getHomephone(), contact.getMobilephone(), contact.getWorkphone()));
+      writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s\n", contact.getFirstname(), contact.getLastname()
+              , contact.getHomephone(), contact.getMobilephone(), contact.getWorkphone(), contact.getFirstmail()
+              , contact.getSecondmail(), contact.getFirdmail()));
     }
     writer.close();
   }
@@ -51,8 +52,11 @@ public class ContactDataGenerator {
     for (int i = 0; i < count; i++) {
       contacts.add(new ContactData().withFirstname(String.format("Vasya %s", i))
               .withLastname(String.format("Petrovich %s", i)).withHomephone(String.format("00-00-00 %s", i))
-      .withMobilephone(String.format("Petrovich %s", i)).withMobilephone(String.format("+7(000)00-00-00 %s", i))
-      .withWorkphone(String.format("+8 800 00 00 00 %s", i)));
+              .withMobilephone(String.format("+7(000)00-00-00 %s", i))
+              .withWorkphone(String.format("+8 800 00 00 00 %s", i))
+              .withFirstmail(String.format("tester1@rrr.com %s", i))
+              .withSecondmail(String.format("tester2@gmail.com", i))
+              .withFirdmail(String.format("tester@666.ru", i)));
     }
     return contacts;
   }
