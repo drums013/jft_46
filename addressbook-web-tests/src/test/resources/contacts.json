@@ -1,0 +1,32 @@
+[
+  {
+    "firstname": "Vasya 0",
+    "lastname": "Petrovich 0",
+    "homephone": "00-00-00 0",
+    "mobilephone": "+7(000)00-00-00 0",
+    "workphone": "+8 800 00 00 00 0",
+    "firstmail": "tester1@rrr.com 0",
+    "secondmail": "tester2@gmail.com",
+    "firdmail": "tester@666.ru"
+  },
+  {
+    "firstname": "Vasya 1",
+    "lastname": "Petrovich 1",
+    "homephone": "00-00-00 1",
+    "mobilephone": "+7(000)00-00-00 1",
+    "workphone": "+8 800 00 00 00 1",
+    "firstmail": "tester1@rrr.com 1",
+    "secondmail": "tester2@gmail.com",
+    "firdmail": "tester@666.ru"
+  },
+  {
+    "firstname": "Vasya 2",
+    "lastname": "Petrovich 2",
+    "homephone": "00-00-00 2",
+    "mobilephone": "+7(000)00-00-00 2",
+    "workphone": "+8 800 00 00 00 2",
+    "firstmail": "tester1@rrr.com 2",
+    "secondmail": "tester2@gmail.com",
+    "firdmail": "tester@666.ru"
+  }
+]
