@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="training.pft.addressbook.tests.ContactEmailTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-12-01T16:12:16" hostname="drums013" time="0.23">
+  <properties/>
+  <testcase name="testContactEmails" classname="training.pft.addressbook.tests.ContactEmailTests" time="0.23"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
