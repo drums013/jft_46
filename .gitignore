@@ -19,4 +19,3 @@ gradle-app.setting
 *.css
 reports
 test-results
-test-results\testGroups
