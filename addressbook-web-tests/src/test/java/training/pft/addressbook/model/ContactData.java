@@ -175,7 +175,11 @@ public class ContactData {
   }
 
   public File getPhoto() {
-    return new File(photo);
+    if (photo == null) {
+      return null;
+    } else {
+      return new File(photo);
+    }
   }
 
   public int getId() {
@@ -245,9 +249,15 @@ public class ContactData {
   @Override
   public String toString() {
     return "ContactData{" +
-            "id='" + id + '\'' +
+            "id=" + id +
             ", firstname='" + firstname + '\'' +
             ", lastname='" + lastname + '\'' +
+            ", homephone='" + homephone + '\'' +
+            ", mobilephone='" + mobilephone + '\'' +
+            ", workphone='" + workphone + '\'' +
+            ", firstmail='" + firstmail + '\'' +
+            ", secondmail='" + secondmail + '\'' +
+            ", firdmail='" + firdmail + '\'' +
             '}';
   }
 
@@ -260,7 +270,13 @@ public class ContactData {
 
     if (id != that.id) return false;
     if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
-    return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
+    if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
+    if (homephone != null ? !homephone.equals(that.homephone) : that.homephone != null) return false;
+    if (mobilephone != null ? !mobilephone.equals(that.mobilephone) : that.mobilephone != null) return false;
+    if (workphone != null ? !workphone.equals(that.workphone) : that.workphone != null) return false;
+    if (firstmail != null ? !firstmail.equals(that.firstmail) : that.firstmail != null) return false;
+    if (secondmail != null ? !secondmail.equals(that.secondmail) : that.secondmail != null) return false;
+    return firdmail != null ? firdmail.equals(that.firdmail) : that.firdmail == null;
   }
 
   @Override
@@ -268,7 +284,12 @@ public class ContactData {
     int result = id;
     result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+    result = 31 * result + (homephone != null ? homephone.hashCode() : 0);
+    result = 31 * result + (mobilephone != null ? mobilephone.hashCode() : 0);
+    result = 31 * result + (workphone != null ? workphone.hashCode() : 0);
+    result = 31 * result + (firstmail != null ? firstmail.hashCode() : 0);
+    result = 31 * result + (secondmail != null ? secondmail.hashCode() : 0);
+    result = 31 * result + (firdmail != null ? firdmail.hashCode() : 0);
     return result;
   }
-
 }
