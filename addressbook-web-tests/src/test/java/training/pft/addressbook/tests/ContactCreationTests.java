@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import training.pft.addressbook.model.ContactData;
 import training.pft.addressbook.model.Contacts;
+import training.pft.addressbook.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -56,9 +57,10 @@ public class ContactCreationTests extends TestBase {
 
   @Test(dataProvider = "validContactsFromJson")
   public void testContactCreation(ContactData contact) {
+    Groups groups = app.db().groups();
     app.goTo().homePage();
     Contacts before = app.db().contacts();
-    app.contact().create(contact, true);
+    app.contact().create(contact.inGroup(groups.iterator().next()), true);
     assertThat(app.contact().count(), equalTo(before.size() + 1));
     Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.withAdded(contact
@@ -68,9 +70,10 @@ public class ContactCreationTests extends TestBase {
 
   @Test(enabled = false)
   public void testBadContactCreation() {
+    Groups groups = app.db().groups();
     app.goTo().homePage();
     Contacts before = app.db().contacts();
-    ContactData contact = new ContactData().withFirstname("'4").withGroup("[none]");
+    ContactData contact = new ContactData().withFirstname("'4");
     app.contact().create(contact, true);
     assertThat(app.contact().count(), equalTo(before.size()));
     Contacts after = app.db().contacts();
