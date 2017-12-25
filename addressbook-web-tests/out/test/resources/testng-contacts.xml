@@ -9,6 +9,8 @@
             <class name="training.pft.addressbook.tests.ContactPhoneTests" />
             <class name="training.pft.addressbook.tests.ContactAddressTests" />
             <class name="training.pft.addressbook.tests.ContactEmailTests" />
+            <class name="training.pft.addressbook.tests.AddContactToGroupTests" />
+            <class name="training.pft.addressbook.tests.DeleteContactFromGroupTests" />
         </classes>
     </test>
 </suite>

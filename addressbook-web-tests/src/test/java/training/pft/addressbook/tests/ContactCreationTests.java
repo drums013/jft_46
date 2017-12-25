@@ -3,10 +3,12 @@ package training.pft.addressbook.tests;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import training.pft.addressbook.model.ContactData;
 import training.pft.addressbook.model.Contacts;
+import training.pft.addressbook.model.GroupData;
 import training.pft.addressbook.model.Groups;
 
 import java.io.BufferedReader;
@@ -55,6 +57,14 @@ public class ContactCreationTests extends TestBase {
     }
   }
 
+  @BeforeMethod
+  public void ensurePreconditions() {
+    if (app.db().groups().size() == 0) {
+      app.goTo().groupPage();
+      app.group().create(new GroupData().withName("test1"));
+    }
+  }
+
   @Test(dataProvider = "validContactsFromJson")
   public void testContactCreation(ContactData contact) {
     Groups groups = app.db().groups();
@@ -70,7 +80,6 @@ public class ContactCreationTests extends TestBase {
 
   @Test(enabled = false)
   public void testBadContactCreation() {
-    Groups groups = app.db().groups();
     app.goTo().homePage();
     Contacts before = app.db().contacts();
     ContactData contact = new ContactData().withFirstname("'4");

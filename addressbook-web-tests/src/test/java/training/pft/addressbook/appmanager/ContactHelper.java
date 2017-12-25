@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import training.pft.addressbook.model.ContactData;
 import training.pft.addressbook.model.Contacts;
+import training.pft.addressbook.model.GroupData;
 
 import java.util.List;
 
@@ -140,5 +141,26 @@ public class ContactHelper extends HelperBase {
     return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
             .withHomephone(home).withMobilephone(mobile).withWorkphone(work).withFirstAddress(address)
             .withFirstmail(email).withSecondmail(email2).withFirdmail(email3);
+  }
+
+  public void addToGroup(ContactData contact, GroupData group) {
+    selectContactById(contact.getId());
+    new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
+    wd.findElement(By.cssSelector("input[value='Add to']")).click();
+  }
+
+  public void removeFromGroup(ContactData contact, GroupData group) {
+    initRemoveFromGroup(group);
+    selectContactById(contact.getId());
+    new Select(wd.findElement(By.cssSelector("select[name='to_group']"))).selectByVisibleText(group.getName());
+    wd.findElement(By.cssSelector("input[name='remove']")).click();
+  }
+
+  private void initRemoveFromGroup(GroupData group) {
+    new Select(wd.findElement(By.cssSelector("select[name='group']"))).selectByVisibleText(group.getName());
+  }
+
+  public void selectAll() {
+    new Select(wd.findElement(By.cssSelector("select[name=\"group\"]"))).selectByVisibleText("[all]");
   }
 }
