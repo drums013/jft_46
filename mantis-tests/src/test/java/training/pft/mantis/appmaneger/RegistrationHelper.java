@@ -3,6 +3,7 @@ package training.pft.mantis.appmaneger;
 import org.openqa.selenium.WebDriver;
 
 public class RegistrationHelper {
+
   private final ApplicationManager app;
   private WebDriver wd;
 
