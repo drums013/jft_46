@@ -25,7 +25,7 @@ public class ResetPasswordTests extends TestBase {
   public void resetPasswordTest() throws IOException, MessagingException {
     app.getDriver();
     app.user().login(app.getProperty("web.adminLogin"), app.getProperty("web.adminPassword"));
-    Users listOfUsers  = app.db().users();
+    Users listOfUsers  = app.db().nonAdminUsers();
     UserData selectedUser = listOfUsers.iterator().next();
     String username = selectedUser.getUsername();
     String email = username + "@localhost";

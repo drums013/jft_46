@@ -22,6 +22,7 @@ public class UserHelper extends HelperBase {
 
   public void resetPassword(String user) {
     this.username = user;
+    click(By.linkText("Manage"));
     click(By.linkText("Manage Users"));
     click(By.linkText(username));
     click(By.cssSelector("input[value='Reset Password']"));
