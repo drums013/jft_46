@@ -14,12 +14,12 @@ import java.util.Set;
 
 import static org.testng.Assert.assertEquals;
 
-public class RestTests {
+public class RestTests extends TestBase {
 
   @Test
   public void testCreateIssue() throws IOException {
     Set<Issue> oldIssues = getIssues();
-    Issue newIssue = new Issue().withSubject("unique name 9.9.7").withDescription("New test issue");
+    Issue newIssue = new Issue().withSubject("unique name").withDescription("New test issue");
     int issueId = createIssue(newIssue);
     Set<Issue> newIssues = getIssues();
     oldIssues.add(newIssue.withId(issueId));
@@ -28,7 +28,7 @@ public class RestTests {
 
   private Set<Issue> getIssues() throws IOException {
     String json = getExecutor()
-            .execute(Request.Get("http://demo.bugify.com/api/issues.json?q=unique+name+9.9.7&page=1&limit=2000"))
+            .execute(Request.Get("http://demo.bugify.com/api/issues.json?page=1&limit=2000"))
             .returnContent().asString();
     JsonElement parsed = new JsonParser().parse(json);
     JsonElement issues = parsed.getAsJsonObject().get("issues");
@@ -36,7 +36,8 @@ public class RestTests {
   }
 
   private Executor getExecutor() {
-    return Executor.newInstance().auth("28accbe43ea112d9feb328d2c00b3eed", "");
+    return Executor.newInstance()
+            .auth("28accbe43ea112d9feb328d2c00b3eed", "");
   }
 
   private int createIssue(Issue newIssue) throws IOException {

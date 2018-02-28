@@ -28,15 +28,16 @@ public class TestBase {
   public boolean isIssueOpen(int issueId) throws RemoteException, ServiceException, MalformedURLException {
     String status = app.soap().getIssueStatus(issueId);
     if (status.equals("resolved") || status.equals("closed")) {
-      return true;
-    } else {
       return false;
+    } else {
+      return true;
     }
   }
 
   public void skipIfNotFixed(int issueId) throws RemoteException, ServiceException, MalformedURLException {
-    if (isIssueOpen(issueId)) {
-      System.out.println("Ignored because issue with id " + issueId + ": http://localhost/mantisbt-1.2.19/view.php?id=" +issueId+ " not solved");
+    if (isIssueOpen(issueId) == true) {
+      System.out.println("Ignored because issue with id " + issueId +
+              ": http://localhost/mantisbt-1.2.19/view.php?id=" +issueId+ " not solved");
       throw new SkipException ("Ignored because issue  " + issueId);
     }
   }

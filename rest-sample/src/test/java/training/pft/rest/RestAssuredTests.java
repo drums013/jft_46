@@ -5,9 +5,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.jayway.restassured.RestAssured;
-import org.apache.http.client.fluent.Executor;
-import org.apache.http.client.fluent.Request;
-import org.apache.http.message.BasicNameValuePair;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -16,17 +13,19 @@ import java.util.Set;
 
 import static org.testng.Assert.assertEquals;
 
-public class RestAssuredTests {
+public class RestAssuredTests extends TestBase {
 
   @BeforeClass
   public void init(){
-    RestAssured.authentication = RestAssured.basic("28accbe43ea112d9feb328d2c00b3eed", "");
+    RestAssured.authentication = RestAssured.
+            basic("28accbe43ea112d9feb328d2c00b3eed", "");
   }
 
   @Test
   public void testCreateIssue() throws IOException {
+    skipIfNotFixed(934);
     Set<Issue> oldIssues = getIssues();
-    Issue newIssue = new Issue().withSubject("unique name 9.9.6").withDescription("New test issue");
+    Issue newIssue = new Issue().withSubject("unique name").withDescription("New test issue");
     int issueId = createIssue(newIssue);
     Set<Issue> newIssues = getIssues();
     oldIssues.add(newIssue.withId(issueId));
@@ -35,7 +34,7 @@ public class RestAssuredTests {
 
   private Set<Issue> getIssues() throws IOException {
     String json = RestAssured
-            .get("http://demo.bugify.com/api/issues.json?q=unique+name+9.9.6&page=1&limit=2000")
+            .get("http://demo.bugify.com/api/issues.json?page=1&limit=2000")
             .asString();
     JsonElement parsed = new JsonParser().parse(json);
     JsonElement issues = parsed.getAsJsonObject().get("issues");
