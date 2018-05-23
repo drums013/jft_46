@@ -6,6 +6,6 @@ public class LoginTests extends TestBase {
 
   @Test
   public void testLogin() {
-    app.user().login("i.dymshakov@ruslink.pro", "123123");
+    app.user().login("i.", "123");
   }
 }
