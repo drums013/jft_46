@@ -1,5 +1,6 @@
 package uitests.ci.appmanager;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -18,6 +19,8 @@ public class ApplicationManager {
   private WebDriver wd;
 
   private String browser;
+  private UserHelper userHelper;
+  private DbHelper dbHelper;
 
   public ApplicationManager(String browser){
     this.browser = browser;
@@ -46,9 +49,21 @@ public class ApplicationManager {
         wd = new InternetExplorerDriver();
       }
 
-      wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
       wd.get(properties.getProperty("web.baseUrl"));
+      wd.manage().window().setSize(new Dimension(1920, 1080));
+      wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
     return wd;
+  }
+
+  public UserHelper user() {
+    if (userHelper == null) {
+      userHelper = new UserHelper(this);
+    }
+    return userHelper;
+  }
+
+  public DbHelper db() {
+    return dbHelper;
   }
 }
